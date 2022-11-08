@@ -1,4 +1,4 @@
-const { Thought, } = require('../models');
+const { Thought, User } = require('../models');
 
 module.exports = {
   // Get all courses
@@ -26,9 +26,9 @@ module.exports = {
       .then((thoughts) =>
         thoughts
           ? res.status(404).json({
-            message: 'user not found'
+            message: 'thought not found'
           })
-          : res.json({ message: 'user successfully deleted' })
+          : res.json({ message: 'thought successfully deleted' })
             .catch((err) => {
               console.log(err);
               res.status(500).json(err);
