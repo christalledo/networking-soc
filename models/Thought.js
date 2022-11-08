@@ -12,7 +12,7 @@ const thoughtSchema = new Schema(
     createdAt: {
       type: Date,
       required: true,
-      timestamp: { type: Date, default: Date.now },
+      default: Date.now,
       get: (date) => {
         if (date) return date.toISOString().split("T")[0];
       },

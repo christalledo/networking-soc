@@ -16,15 +16,6 @@ const userSchema = new Schema(
       // match a valid email address
       match: /.+\@.+\..+/,
     },
-    startDate: {
-      type: Date,
-      default: Date.now(),
-    },
-    endDate: {
-      type: Date,
-      // Sets a default value of 12 weeks from now
-      default: () => new Date(+new Date() + 84 * 24 * 60 * 60 * 1000),
-    },
     thoughts: [
       {
         type: Schema.Types.ObjectId,
@@ -52,7 +43,7 @@ userSchema
   .virtual('friendCount')
   // Getter
   .get(function () {
-    return [friends];
+    return this.friends.length;
   })
 // Setter to set the first and last name
 const User = model('user', userSchema);
