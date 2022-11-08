@@ -1,4 +1,4 @@
-const { Thought, User, } = require('../models');
+const { Thought, } = require('../models');
 
 module.exports = {
   // Get all courses
@@ -17,7 +17,7 @@ module.exports = {
       .then((thoughts) =>
         !thoughts
           ? res.status(404).json({ message: 'No such thoughts exists' })
-          : thoughts.findOneAndUpdate(
+          : Thought.findOneAndUpdate(
             { thoughts: req.params.thoughtsId },
             { $pull: { user: req.params.thoughtsId } },
             { new: true }
